@@ -1,23 +1,23 @@
-FROM kallikrein/cordova
+# FROM kallikrein/cordova
 
-MAINTAINER Revanth Reddy Malé <malerevanthreddy3099@gmail.com>
+# MAINTAINER Revanth Reddy Malé <malerevanthreddy3099@gmail.com>
 
-RUN \
-apt-get update && \
-apt-get install -y lib32stdc++6 lib32z1
+# RUN \
+# apt-get update && \
+# apt-get install -y lib32stdc++6 lib32z1
 
-# download and extract android sdk
-RUN curl http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz | tar xz -C /usr/local/
-ENV ANDROID_HOME /usr/local/android-sdk-linux
-ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+# # download and extract android sdk
+# RUN curl http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz | tar xz -C /usr/local/
+# ENV ANDROID_HOME /usr/local/android-sdk-linux
+# ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
-# update and accept licences
-RUN ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | /usr/local/android-sdk-linux/tools/android update sdk --no-ui -a --filter platform-tool,build-tools-24.4.1,android-24; \
-    find /usr/local/android-sdk-linux -perm 0744 | xargs chmod 755
+# # update and accept licences
+# RUN ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | /usr/local/android-sdk-linux/tools/android update sdk --no-ui -a --filter platform-tool,build-tools-24.4.1,android-24; \
+#     find /usr/local/android-sdk-linux -perm 0744 | xargs chmod 755
 
-ENV GRADLE_USER_HOME /src/gradle
-VOLUME /src
-WORKDIR /src
+# ENV GRADLE_USER_HOME /src/gradle
+# VOLUME /src
+# WORKDIR /src
 
 
 # ------------------------------------------
@@ -48,3 +48,20 @@ WORKDIR /src
 # WORKDIR /workspace
 # ENV PATH $PATH:/opt/android/tools/bin
 # ENV PATH $PATH:/opt/gradle-4.1/wrapper/dists/gradle-4.1/bin/
+
+
+# -----------------------------------
+FROM bitriseio/docker-android:latest
+
+# ------------------------------------------------------
+# --- Install required tools
+
+RUN apt-get update -qq
+
+# ------------------------------------------------------
+# --- Cordova CLI
+
+RUN npm install -g cordova
+RUN cordova -v
+
+
