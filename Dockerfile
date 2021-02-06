@@ -1,5 +1,5 @@
-# FROM kallikrein/cordova
-FROM beevelop/cordova:latest
+FROM kallikrein/cordova
+
 MAINTAINER Revanth Reddy Malé <malerevanthreddy3099@gmail.com>
 
 RUN \
@@ -7,7 +7,7 @@ apt-get update && \
 apt-get install -y lib32stdc++6 lib32z1
 
 # download and extract android sdk
-RUN curl http://dl.google.com/android/android-sdk_r24.2-linux.tgz | tar xz -C /usr/local/
+RUN curl http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz | tar xz -C /usr/local/
 ENV ANDROID_HOME /usr/local/android-sdk-linux
 ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
