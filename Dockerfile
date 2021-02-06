@@ -1,5 +1,5 @@
-FROM kallikrein/cordova
-
+# FROM kallikrein/cordova
+FROM beevelop/cordova:latest
 MAINTAINER Revanth Reddy Malé <malerevanthreddy3099@gmail.com>
 
 RUN \
