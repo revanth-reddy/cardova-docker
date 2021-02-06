@@ -1,6 +1,8 @@
 FROM beevelop/cordova:latest
 MAINTAINER Revanth Reddy Malé <malerevanthreddy3099@gmail.com>
 WORKDIR /opt
+RUN apt-get update
+RUN apt-get install -y wget 
 RUN wget -q https://services.gradle.org/distributions/gradle-4.1-all.zip
 RUN chmod 775 /opt/gradle-4.1-all.zip
 RUN mkdir -p /opt/gradle-4.1/wrapper/dists/
