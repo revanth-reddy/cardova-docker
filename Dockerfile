@@ -6,6 +6,7 @@ RUN apt-get install -y wget
 RUN wget -q https://services.gradle.org/distributions/gradle-4.1-all.zip
 RUN chmod 775 /opt/gradle-4.1-all.zip
 RUN mkdir -p /opt/gradle-4.1/wrapper/dists/
+RUN apt-get install -y unzip 
 RUN unzip gradle-4.1-all.zip -d /opt/gradle-4.1/wrapper/dists/
 RUN mv /opt/gradle-4.1/wrapper/dists/gradle-4.1/bin/gradle /opt/gradle-4.1/wrapper/dists/gradle-4.1/bin/gradle4
 RUN chmod 775 /opt/gradle-4.1/wrapper/dists/gradle-4.1/bin/gradle4
