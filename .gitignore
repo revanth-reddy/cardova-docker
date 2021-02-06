@@ -1,0 +1,5 @@
+.bash_history
+.node-gyp
+.npm
+.pki
+node_modules
